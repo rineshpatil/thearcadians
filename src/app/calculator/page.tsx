@@ -41,11 +41,15 @@ export default function PointsCalculator() {
         throw new Error("Failed to fetch participant data");
       }
       
-      const data = await response.json();
+      const data = await response.json() as CalculatorResult;
       setResult(data);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Calculator error:", err);
-      setError(err.message || "An error occurred while calculating points. Please try again.");
+      setError(
+        err instanceof Error 
+          ? err.message 
+          : "An error occurred while calculating points. Please try again."
+      );
     } finally {
       setLoading(false);
     }

@@ -25,7 +25,7 @@ export default function Leaderboard() {
         }
         
         const data = await response.json();
-        setLeaderboardData(data.participants);
+        setLeaderboardData((data as { participants: Participant[] }).participants);
       } catch (err) {
         console.error("Leaderboard error:", err);
         setError("An error occurred while fetching leaderboard data. Please try again later.");

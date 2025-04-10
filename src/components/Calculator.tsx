@@ -1,4 +1,5 @@
-// ... existing imports ...
+// Add this import at the top of your file
+import { useState } from 'react';
 
 type CalculatorResult = {
   totalPoints: number;
@@ -6,10 +7,9 @@ type CalculatorResult = {
 };
 
 export default function Calculator() {
-  // Properly formatted useState hook with correct React import
   const [result, setResult] = useState<CalculatorResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  // When setting state, ensure proper typing
   const calculatePoints = async (data: any): Promise<void> => {
     try {
       // ... calculation logic ...
@@ -19,13 +19,15 @@ export default function Calculator() {
       };
       
       setResult(calculated); // Now properly typed
-    } catch (error) {
+    } catch (err) {
+      console.error("Calculator error:", err);
+      setError(
+        err instanceof Error 
+          ? err.message 
+          : "An error occurred while calculating points. Please try again."
+      );
       setResult(null);
     }
   };
   // ... rest of component ...
-}
-
-function useState<T>(arg0: null): [any, any] {
-    throw new Error("Function not implemented.");
 }
