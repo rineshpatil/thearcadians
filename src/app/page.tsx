@@ -57,7 +57,7 @@ export default function Home() {
       }
       
       const data = await response.json();
-      setSearchResults(data);
+      setSearchResults(data as SearchResult);
     } catch (err) {
       console.error("Search error:", err);
       setError("An error occurred while searching. Please try again.");
