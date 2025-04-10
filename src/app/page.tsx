@@ -267,3 +267,19 @@ export default function Home() {
     </div>
   );
 }
+
+// Remove this duplicate default export at the end of the file:
+// export default function Calculator() {
+//   const [result, setResult] = useState<CalculatorResult | null>(null);
+//
+//   const calculatePoints = async (inputData: InputValues) => {
+//     try {
+//       // ... calculation logic ...
+//       setResult(calculatedData); // Already properly typed
+//     } catch (err) {
+//       // Safe error handling
+//       console.error("Calculator error:", err instanceof Error ? err : new Error(String(err)));
+//       setResult(null);
+//     }
+//   };
+// }
