@@ -1,10 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: "standalone", // Recommended for Vercel
-  // If using Cloudflare Workers features:
+module.exports = {
   experimental: {
-    instrumentationHook: true,
-  }
+    outputFileTracing: false,
+  },
+  output: "standalone", // Recommended for Vercel
 };
-
-module.exports = nextConfig;
